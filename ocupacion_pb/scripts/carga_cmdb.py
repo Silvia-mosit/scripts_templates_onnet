@@ -1,10 +1,10 @@
 import pandas as pd
 from pathlib import Path
 
-CARGA_PATH    = "../data_general/Carga_CMDB_Ocupacion_OLT-VALDIVIA.csv"
-BUSQUEDA_PATH = "../data_general/VALDIVIA_copy.csv"
+CARGA_PATH    = "../data_general/actualizacion/Carga_CMDB_Ocupacion_20260611_PENCO.csv"
+BUSQUEDA_PATH = "../data_general/PENCO_V2_copy.csv"
 OLT_PATH      = "../data_general/Consolidado_OLT.xlsx"
-T11_PARES_PATH = "../data_general/T11_Tramo_VALDIVIA_cta_pares.csv"
+T11_PARES_PATH = "../data_general/T11_Tramo_PENCO_cta_pares.csv"
 
 # Nombres de columna por posicion (evita hardcodear si cambian)
 COL_BUSQUEDA_KEY = "CODIGO EQUIPO"      # col U (idx 20) en BUSQUEDA_PATH

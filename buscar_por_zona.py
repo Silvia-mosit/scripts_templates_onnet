@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-INPUT_FILE = Path("data_xlsx/t14/t14_OLT_inicial_general_ultimo.xlsx")
+INPUT_FILE = Path("data_xlsx/t14/t14_DGO_inicial_general_ultimo.xlsx")
 OUTPUT_FILE = Path("data_xlsx/target.xlsx")
 COLUMN = "F"  # columna F (índice 5)
 
@@ -21,4 +21,4 @@ def buscar_por_zona(zona: str, input_file: Path = INPUT_FILE, output_file: Path 
 
 
 if __name__ == "__main__":
-    buscar_por_zona("NUEVA SAN ANTONIO")
+    buscar_por_zona("AVENIDA ORIENTAL NTE PCS")

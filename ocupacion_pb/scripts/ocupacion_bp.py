@@ -2,7 +2,7 @@
 import pandas as pd
 from pathlib import Path
 
-CSV_PATH = "../data_general/Recursos_OLT_Ocupacion_OLT-VALDIVIA.csv"
+CSV_PATH = "../data_general/actualizacion/Recursos_OLT_Ocupacion_20260611_PENCO.csv"
 OLT_PATH = "../data_general/Consolidado_OLT.xlsx"
 
 

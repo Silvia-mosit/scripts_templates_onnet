@@ -21,7 +21,8 @@ def filtrar_por_codigos(
     codigos_header = 0 if codigos_tiene_encabezado else None
     datos_header = 0 if datos_tiene_encabezado else None
     df_codigos = pd.read_excel(codigos_path, sheet_name=0, header=codigos_header)
-    df_datos = pd.read_excel(datos_path, header=datos_header)
+    #sheet name ajustar segun busqueda
+    df_datos = pd.read_excel(datos_path,header=datos_header)
 
     col_ref = _resolve_col(df_codigos, codigos_col)
     col_datos = _resolve_col(df_datos, datos_col)
@@ -46,7 +47,24 @@ def filtrar_por_codigos(
         if str(c).strip() not in encontrados_str
         and not pd.to_numeric(pd.Series([c]), errors="coerce").isin(encontrados_numeric).any()
     ]
+        # DEBUG — pegar antes de mask_numeric = ...
+    print("=== CÓDIGOS ===")
+    print(f"  tipo: {type(codigos[0])}, valor: {repr(codigos[0])}")
+    print(f"  codigos_numeric: {list(codigos_numeric[:3])}")
+    print(f"  codigos_str: {list(codigos_str[:3])}")
 
+    print("=== DATOS col A ===")
+    muestra = df_datos[col_datos].dropna().head(3)
+    print(f"  tipo: {type(muestra.iloc[0])}, valor: {repr(muestra.iloc[0])}")
+    datos_key_muestra = pd.to_numeric(muestra, errors="coerce")
+    print(f"  como numérico: {list(datos_key_muestra)}")
+    print(f"  como string: {list(muestra.astype(str).str.strip())}")
+
+    print("=== INTERSECCIÓN ===")
+    print(f"  numérica: {set(datos_key_muestra.dropna()).intersection(set(codigos_numeric))}")
+    print(f"  string:   {set(muestra.astype(str).str.strip()).intersection(set(codigos_str[:10]))}")
+
+#FIN DEBUG
     print(f"{len(resultado)} filas encontradas de {len(df_datos)} totales.")
     if no_encontrados:
         print(f"\n{len(no_encontrados)} código(s) no encontrados:")
@@ -72,9 +90,11 @@ def _resolve_col(df: pd.DataFrame, col: str) -> str:
 
 if __name__ == "__main__":
     filtrar_por_codigos(
-        codigos_path="data_xlsx/t10/nva_sanantonio_processed_t10_empalme.xlsx",
+        codigos_path="data_xlsx/t10/oriental_t10_acceso.xlsx",
         codigos_col="CF",
-        datos_path="data_xlsx/t10/t10_term_empalme_general_ultimo.xlsx",
+        datos_path="data_xlsx/t10/10-divisor_acceso.xlsx",
         datos_col="A",
         output_path="data_xlsx/target.xlsx",
+        codigos_tiene_encabezado=True,
+        datos_tiene_encabezado=True,
     )

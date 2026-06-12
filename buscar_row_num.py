@@ -75,9 +75,9 @@ def _letra_a_idx0(col: str) -> int:
 
 if __name__ == "__main__":
     buscar_y_escribir(
-        codigos_path="data_xlsx/14_conn_por_col_v3_actual_copy.xlsx",
-        codigos_col="F",
-        datos_path="data_xlsx/nva_sanantonio_processed_v3.xlsx",
+        codigos_path="data_xlsx/t14/t14_DGO_inicial_general_ultimo.xlsx",
+        codigos_col="W",
+        datos_path="data_xlsx/oriental_t11.xlsx",
         buscar_col="H",
         escribir_col="BV",
         primera_fila_datos=5,
